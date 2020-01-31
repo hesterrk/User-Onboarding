@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import * as Yup from 'yup';
 import { Form, Formik, Field, ErrorMessage } from 'formik';
+import Users from "./Users";
 
 export default function MyForm () {
+
+    const [users, setUsers] = useState([]);
+
+
+
 
     function submitHandler(values, actions) {
         console.log(values, actions);
@@ -77,7 +83,9 @@ export default function MyForm () {
         </Form>
       </Formik>
 
+{/* //Adding our users component to pass down data to */}
 
+<Users />
 
         </div>
     );
