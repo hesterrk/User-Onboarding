@@ -19,6 +19,7 @@ export default function MyForm () {
         .post('https://reqres.in/api/users', values)
         .then(response => {
             console.log(response.data);
+            setUsers(response.data);
             actions.resetForm();
 
         })
@@ -85,7 +86,7 @@ export default function MyForm () {
 
 {/* //Adding our users component to pass down data to */}
 
-<Users />
+<Users users={users} />
 
         </div>
     );

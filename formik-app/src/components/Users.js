@@ -1,14 +1,17 @@
 import React from 'react';
 
 
-export default function Users() {
+export default function Users(props) {
 
 
     return (
         <div>
 
-            Hi from Users List 
-            
+            <h2>Our Formik User DataBase</h2>
+        <h3>{props.users.name}</h3>
+        <p>{props.users.email}</p>
+        <p>{props.users.password}</p>
+        <p>{props.users.terms}</p>
         </div>
     )
 }
