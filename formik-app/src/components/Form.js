@@ -61,7 +61,7 @@ export default function Form () {
           />
           <ErrorMessage name="password" component="div" className="error"/>
           
-          <label htmlFor="form_tos">Agree With Our Terms Of Service>?</label>
+          <label htmlFor="form_tos">Agree With Our Terms Of Service?</label>
           <Field
             type="checkbox"
             id="form_tos"
@@ -78,6 +78,14 @@ export default function Form () {
         </div>
     );
 }
+
+
+const validationSchema = Yup.object().shape({
+    name: Yup.string().required('Please enter a valid name'),
+    email: Yup.string().required('Please enter a valid email'),
+    password: Yup.string().required('Please enter a password'),
+    terms: Yup.boolean().required('Please agree to the Terms and Conditions')
+  });
 
 
 const initialTestingFormValues = {
