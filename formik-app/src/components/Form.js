@@ -3,22 +3,26 @@ import axios from 'axios';
 import * as Yup from 'yup';
 import { Form, Formik, Field, ErrorMessage } from 'formik';
 
-export default function Form () {
+export default function MyForm () {
 
+    function submitHandler(values, actions) {
+        console.log(values, actions);
 
+        axios 
 
+        .post('https://reqres.in/api/users', values)
+        .then(response => {
+            console.log(response.data);
+            actions.resetForm();
 
+        })
+        .catch(event => console.log(event))
 
+        .finally(() => {
+            console.log('Axios Post request has finished');
+        })
 
-
-
-
-
-
-
-
-
-
+    }
 
 
 
