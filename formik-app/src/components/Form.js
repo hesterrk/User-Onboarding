@@ -139,9 +139,10 @@ export default function MyForm () {
 
 
 const validationSchema = Yup.object().shape({
-    name: Yup.string().required('Please enter a valid name'),
+    name: Yup.string().required('Please enter a valid name').min(3, 'Name must have at least 3 characters'),
     email: Yup.string().email('Must be an email address').required('Please enter a valid email'),
-    password: Yup.string().required('Please enter a password'),
+    password: Yup.string().min(7, 'Too Short!').required('Please enter a password').matches(
+      /^(?=.*[A-Za-z])(?=.*d)(?=.*[@$!%*#?&])[A-Za-zd@$!%*#?&]{8,}$/, "Your Password Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character"),
     role: Yup.string().required('Please Select a Role'),
     terms: Yup.boolean().required('Please agree to the Terms and Conditions')
   });
