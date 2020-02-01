@@ -3,6 +3,31 @@ import axios from 'axios';
 import * as Yup from 'yup';
 import { Form, Formik, Field, ErrorMessage } from 'formik';
 import Users from './Users';
+import styled from 'styled-components';
+
+const Label = styled.label `
+background: lavender;
+border: 4px solid lavender;
+border-radius: 3px;
+
+
+`
+
+const Div = styled.div `
+display: flex;
+flex-direction: column;
+justify-content: center;
+flex-wrap: wrap;
+align-content:center;
+width: 100%;
+margin-top: 10px;
+
+background: #8E54E9;
+`
+
+
+
+
 
 export default function MyForm () {
 
@@ -38,6 +63,7 @@ export default function MyForm () {
 
         <div className="Form">
            
+           <div>
            <Formik
         onSubmit={submitHandler}
         
@@ -46,7 +72,9 @@ export default function MyForm () {
         validationSchema={validationSchema}
       >
         <Form>
-          <label htmlFor="form_name">Name</label>
+          <Div>
+          
+          <Label htmlFor="form_name">Name</Label>
           <Field
             type="text"
             id="form_name"
@@ -55,7 +83,7 @@ export default function MyForm () {
           />
           <ErrorMessage name="name" component="div" className="error"/>
 
-          <label htmlFor="form_email">Email</label>
+          <Label htmlFor="form_email">Email</Label>
           <Field
             type="email"
             id="form_email"
@@ -64,7 +92,7 @@ export default function MyForm () {
           />
           <ErrorMessage name="email" component="div" className="error"/>
           
-          <label htmlFor="form_password">Password</label>
+          <Label htmlFor="form_password">Password</Label>
           <Field
             type="password"
             id="form_password"
@@ -73,7 +101,19 @@ export default function MyForm () {
           />
           <ErrorMessage name="password" component="div" className="error"/>
           
-          <label htmlFor="form_tos">Agree With Our Terms Of Service?</label>
+          <Field
+            as="select"
+            name="role"
+            id="form_role"
+          >
+            <option value="">Select a role</option>
+            <option value="front">Front-End</option>
+            <option value="back">Back-End</option>
+            <option value="data">Data Engineer</option>
+          </Field>
+          <ErrorMessage name="role" component="div" className="error"/>
+
+          <Label htmlFor="form_tos">Agree With Our Terms Of Service?</Label>
           <Field
             type="checkbox"
             id="form_tos"
@@ -82,13 +122,18 @@ export default function MyForm () {
           <ErrorMessage name="terms" component="div" className="error"/>
          
           <button type="submit">Submit</button>
+          </Div>
         </Form>
       </Formik>
+     </div>
+    
 
 
 <Users submit={users} />
 
-        </div>
+
+</div>
+       
     );
 }
 
@@ -97,6 +142,7 @@ const validationSchema = Yup.object().shape({
     name: Yup.string().required('Please enter a valid name'),
     email: Yup.string().email('Must be an email address').required('Please enter a valid email'),
     password: Yup.string().required('Please enter a password'),
+    role: Yup.string().required('Please Select a Role'),
     terms: Yup.boolean().required('Please agree to the Terms and Conditions')
   });
 
@@ -105,6 +151,7 @@ const initialTestingFormValues = {
     name: '',
     email: '',
     password: '',
+    role: '',
     terms: false
   }
   
