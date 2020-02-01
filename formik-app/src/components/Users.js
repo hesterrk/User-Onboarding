@@ -2,6 +2,7 @@ import React from 'react';
 
 
 export default function Users(props) {
+    console.log(props, 'This is props');
    
   
 
@@ -12,9 +13,9 @@ export default function Users(props) {
         <h2>Our Formik User DataBase</h2>
        
       
-           <div className="persons">  <h3> {props.user.name}</h3>
-                 <p>{props.user.email}</p>
-                 <p>{props.user.password}</p>   </div>
+           <div className="persons">  <h3>                          {props.submit.name}</h3>
+                 <p>{props.submit.email}</p>
+                 <p>{props.submit.password}</p>   </div>
               
       
 

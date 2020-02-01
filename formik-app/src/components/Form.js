@@ -86,7 +86,7 @@ export default function MyForm () {
       </Formik>
 
 
-<Users user={users} />
+<Users submit={users} />
 
         </div>
     );
@@ -95,7 +95,7 @@ export default function MyForm () {
 
 const validationSchema = Yup.object().shape({
     name: Yup.string().required('Please enter a valid name'),
-    email: Yup.string().required('Please enter a valid email'),
+    email: Yup.string().email('Must be an email address').required('Please enter a valid email'),
     password: Yup.string().required('Please enter a password'),
     terms: Yup.boolean().required('Please agree to the Terms and Conditions')
   });
